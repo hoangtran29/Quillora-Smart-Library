@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>10 Tính năng AI - Phần 2</title>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+        
+        .slide-container {
+            position: relative;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .slide-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 90% 10%, rgba(220, 20, 60, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(220, 20, 60, 0.03) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: absolute;
+            z-index: 10;
+            width: 1280px;
+            height: 720px;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header-icon {
+            width: 45px;
+            height: 45px;
+            background: #DC143C;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .header-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+        
+        .header-subtitle {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            flex: 1;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            flex: 1;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(220, 20, 60, 0.1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: all 0.3s ease;
+            height: 440px; /* Uniform fixed height for balance */
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .card-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(220, 20, 60, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .card-content {
+            font-size: 14px;
+            color: #4a4a4a;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            color: #DC143C;
+            font-weight: 600;
+        }
+        
+        .card-footer {
+            margin-top: auto;
+        }
+        
+        .feature-tag {
+            display: inline-block;
+            background: rgba(220, 20, 60, 0.06);
+            color: #DC143C;
+            font-size: 12px;
+            padding: 6px 14px;
+            border-radius: 12px;
+            margin-top: 12px;
+            font-weight: 600;
+            width: fit-content;
+        }
+        
+        .bottom-row {
+            display: flex;
+            gap: 25px;
+            margin-top: 5px;
+            height: 100px;
+        }
+        
+        .insight-box {
+            flex: 1;
+            background: rgba(220, 20, 60, 0.05);
+            border-radius: 14px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        
+        .insight-icon {
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .insight-text {
+            flex: 1;
+        }
+        
+        .insight-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+        
+        .insight-desc {
+            font-size: 15px;
+            color: #555;
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #DC143C;
+        }
+        
+        .status-dot.active {
+            background: #28a745;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<div class="slide-background"></div>
+<div class="content-wrapper">
+<div class="header">
+<div class="header-left">
+<div class="header-icon">
+<i class="fas fa-robot"></i>
+</div>
+<div>
+<div class="header-title">10 Tính năng AI - Phần 2</div>
+<div class="header-subtitle">5 tính năng nâng cao cho trải nghiệm học tập thông minh</div>
+</div>
+</div>
+<div class="header-right">
+<span style="color: #666; font-size: 16px; font-weight: 500;">Ngày hội Đọc sách PTIT 2026</span>
+</div>
+</div>
+<div class="main-content">
+<div class="cards-grid">
+<!-- Card 1 -->
+<div class="feature-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-paint-brush"></i></div>
+<div class="card-title">Minh họa tranh</div>
+</div>
+<div class="card-content">
+                        Tạo <span class="highlight">tranh minh họa phong cách watercolor</span> giúp hình dung khái niệm nhanh chóng.
+                    </div>
+<div class="card-footer">
+<div class="status-indicator">
+<div class="status-dot active"></div>
+<span>Hoạt động</span>
+</div>
+<div class="feature-tag">Visual</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="feature-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-microphone"></i></div>
+<div class="card-title">Nhập liệu giọng nói</div>
+</div>
+<div class="card-content">
+<span class="highlight">Đọc nội dung/đặt câu hỏi</span> rảnh tay, nhận diện chính xác giọng nói.
+                    </div>
+<div class="card-footer">
+<div class="status-indicator">
+<div class="status-dot active"></div>
+<span>Sẵn sàng</span>
+</div>
+<div class="feature-tag">Voice Input</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="feature-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-headset"></i></div>
+<div class="card-title">Trò chuyện giọng nói</div>
+</div>
+<div class="card-content">
+<span class="highlight">Phản hồi nhanh</span>, cảm giác như trợ lý học tập thật sự.
+                    </div>
+<div class="card-footer">
+<div class="status-indicator">
+<div class="status-dot active"></div>
+<span>Real-time</span>
+</div>
+<div class="feature-tag">AI Chat</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="feature-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-search-location"></i></div>
+<div class="card-title">Tìm kiếm ngữ nghĩa</div>
+</div>
+<div class="card-content">
+                        Tìm <span class="highlight">theo ý nghĩa</span> thay vì từ khóa, chạm đúng đoạn cần.
+                    </div>
+<div class="card-footer">
+<div class="status-indicator">
+<div class="status-dot active"></div>
+<span>Active</span>
+</div>
+<div class="feature-tag">Semantic</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="feature-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-history"></i></div>
+<div class="card-title">Lịch sử hội thoại</div>
+</div>
+<div class="card-content">
+<span class="highlight">Lưu, gắn nhãn</span> và tiếp tục học từ các phiên trước.
+                    </div>
+<div class="card-footer">
+<div class="status-indicator">
+<div class="status-dot active"></div>
+<span>Synced</span>
+</div>
+<div class="feature-tag">Memory</div>
+</div>
+</div>
+</div>
+<div class="bottom-row">
+<div class="insight-box">
+<div class="insight-icon"><i class="fas fa-magic"></i></div>
+<div class="insight-text">
+<div class="insight-title">Tính năng AI thông minh</div>
+<div class="insight-desc">Tự động tạo nội dung, minh họa và tương tác đa phương thức</div>
+</div>
+</div>
+<div class="insight-box">
+<div class="insight-icon"><i class="fas fa-user-graduate"></i></div>
+<div class="insight-text">
+<div class="insight-title">Trải nghiệm cá nhân hóa</div>
+<div class="insight-desc">Phù hợp với từng nhu cầu học tập của sinh viên</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

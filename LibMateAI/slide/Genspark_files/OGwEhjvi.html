@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.genspark.ai/api/files/s/OGwEhjvi -->
+<html lang="vi"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Công nghệ RAG hoạt động như thế nào?</title>
+<link href="./all.min.css" rel="stylesheet">
+<link href="./css2" rel="stylesheet">
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+        
+        .slide-container {
+            position: relative;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .slide-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 90% 10%, rgba(220, 20, 60, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(220, 20, 60, 0.03) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: absolute;
+            z-index: 10;
+            width: 1280px;
+            height: 720px;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header-icon {
+            width: 54px;
+            height: 54px;
+            background: #DC143C;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .header-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+        
+        .header-subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            flex: 1;
+        }
+        
+        .process-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(220, 20, 60, 0.1);
+        }
+        
+        .process-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .process-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .process-steps {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 35px;
+            position: relative;
+        }
+        
+        .step-item {
+            flex: 1;
+            background: white;
+            border-radius: 16px;
+            padding: 25px 20px;
+            border: 1px solid rgba(220, 20, 60, 0.15);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -16px;
+            left: 20px;
+            width: 36px;
+            height: 36px;
+            background: #DC143C;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(220, 20, 60, 0.3);
+            z-index: 5;
+        }
+        
+        .step-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .step-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+        
+        .step-desc {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .step-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(220, 20, 60, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .arrow-connector {
+            position: absolute;
+            top: 50%;
+            right: -25px;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 2px;
+            background: #DC143C;
+            z-index: 2;
+        }
+        
+        .arrow-connector::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #DC143C;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+        
+        .result-section {
+            background: linear-gradient(90deg, rgba(220, 20, 60, 0.08) 0%, rgba(220, 20, 60, 0.03) 100%);
+            border-radius: 16px;
+            padding: 25px 35px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-top: 10px;
+            border: 1px solid rgba(220, 20, 60, 0.05);
+        }
+        
+        .result-icon {
+            width: 56px;
+            height: 56px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 28px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .result-content {
+            flex: 1;
+        }
+        
+        .result-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+        
+        .result-desc {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        .tech-stack {
+            display: flex;
+            gap: 12px;
+            flex-wrap: nowrap;
+        }
+        
+        .tech-item {
+            padding: 8px 18px;
+            background: white;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #DC143C;
+            font-weight: 600;
+            border: 1px solid rgba(220, 20, 60, 0.2);
+            white-space: nowrap;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style></head>
+<body>
+<div class="slide-container">
+<div class="slide-background"></div>
+<div class="content-wrapper">
+<div class="header">
+<div class="header-left">
+<div class="header-icon">
+<i class="fas fa-cogs"></i>
+</div>
+<div>
+<div class="header-title">Công nghệ RAG hoạt động như thế nào?</div>
+<div class="header-subtitle">Quy trình 4 bước: Upload → Vector DB → Retrieval → Generation</div>
+</div>
+</div>
+<div class="header-right">
+<span style="color: #666; font-size: 16px; font-weight: 600;">Ngày hội Đọc sách PTIT 2026</span>
+</div>
+</div>
+<div class="main-content">
+<div class="process-container">
+<div class="process-header">
+<div class="process-title">
+<i class="fas fa-project-diagram" style="color: #DC143C;"></i>
+<span>Quy trình xử lý RAG (Retrieval-Augmented Generation)</span>
+</div>
+</div>
+<div class="process-steps">
+<!-- Step 1 -->
+<div class="step-item">
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="step-icon"><i class="fas fa-upload"></i></div>
+<div class="step-title">Upload tài liệu</div>
+<div class="step-desc">
+                                Hệ thống tiếp nhận tài liệu/sách từ người dùng, hỗ trợ nhiều định dạng file (PDF, DOC, TXT)
+                            </div>
+</div>
+<div class="arrow-connector"></div>
+</div>
+<!-- Step 2 -->
+<div class="step-item">
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="step-icon"><i class="fas fa-database"></i></div>
+<div class="step-title">Chia nhỏ &amp; Vector DB</div>
+<div class="step-desc">
+                                Chia nhỏ đoạn văn bản, nhúng vector và lưu vào cơ sở dữ liệu vector
+                            </div>
+</div>
+<div class="arrow-connector"></div>
+</div>
+<!-- Step 3 -->
+<div class="step-item">
+<div class="step-number">3</div>
+<div class="step-content">
+<div class="step-icon"><i class="fas fa-search"></i></div>
+<div class="step-title">Retrieval ngữ nghĩa</div>
+<div class="step-desc">
+                                Truy hồi các đoạn liên quan theo ngữ nghĩa từ cơ sở dữ liệu
+                            </div>
+</div>
+<div class="arrow-connector"></div>
+</div>
+<!-- Step 4 -->
+<div class="step-item">
+<div class="step-number">4</div>
+<div class="step-content">
+<div class="step-icon"><i class="fas fa-robot"></i></div>
+<div class="step-title">Generation</div>
+<div class="step-desc">
+                                Mô hình AI tạo câu trả lời có dẫn nguồn chính xác
+                            </div>
+</div>
+</div>
+</div>
+</div>
+<div class="result-section">
+<div class="result-icon">
+<i class="fas fa-check-circle"></i>
+</div>
+<div class="result-content">
+<div class="result-title">Kết quả: Câu trả lời chính xác, minh bạch nguồn</div>
+<div class="result-desc">
+                        Hệ thống cung cấp câu trả lời dựa trên nội dung tài liệu, có trích dẫn chương/trang, giảm thiểu ảo giác AI
+                    </div>
+</div>
+<div class="tech-stack">
+<div class="tech-item">Python</div>
+<div class="tech-item">FastAPI</div>
+<div class="tech-item">LangChain</div>
+<div class="tech-item">Vector DB</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script defer="" src="./v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;4edd5f8ec12a48cfa682ab8261b80a79&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+<script src="./slide-inner.js.download"></script></body></html>

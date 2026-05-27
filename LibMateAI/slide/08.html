@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Công nghệ &amp; Kiến trúc</title>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+        
+        .slide-container {
+            position: relative;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .slide-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 90% 10%, rgba(220, 20, 60, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(220, 20, 60, 0.03) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: absolute;
+            z-index: 10;
+            width: 1280px;
+            height: 720px;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header-icon {
+            width: 54px;
+            height: 54px;
+            background: #DC143C;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .header-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+        
+        .header-subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex: 1;
+        }
+        
+        .architecture-container {
+            background: white;
+            border-radius: 20px;
+            padding: 25px 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(220, 20, 60, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .layer {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px 20px;
+            background: rgba(220, 20, 60, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(220, 20, 60, 0.1);
+            position: relative;
+        }
+        
+        .layer-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 220px;
+        }
+        
+        .layer-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(220, 20, 60, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .layer-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .layer-desc {
+            font-size: 13px;
+            color: #666;
+            margin-top: 2px;
+        }
+        
+        .tech-stack {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            flex: 1;
+            align-items: center;
+        }
+        
+        .tech-badge {
+            padding: 6px 14px;
+            background: white;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #DC143C;
+            font-weight: 600;
+            border: 1px solid rgba(220, 20, 60, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        
+        .tech-badge i {
+            font-size: 12px;
+        }
+        
+        .arrow-down {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #DC143C;
+            font-size: 16px;
+            height: 20px;
+            margin: 0;
+        }
+        
+        .stats-row {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+        
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(220, 20, 60, 0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(220, 20, 60, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 18px;
+        }
+        
+        .stat-info {
+            flex: 1;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+        
+        .stat-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<div class="slide-background"></div>
+<div class="content-wrapper">
+<div class="header">
+<div class="header-left">
+<div class="header-icon">
+<i class="fas fa-layer-group"></i>
+</div>
+<div>
+<div class="header-title">Công nghệ &amp; Kiến trúc</div>
+<div class="header-subtitle">Hệ thống AI RAG cho sinh viên PTIT</div>
+</div>
+</div>
+<div class="header-right">
+<span style="color: #666; font-size: 16px; font-weight: 500;">Ngày hội Đọc sách PTIT 2026</span>
+</div>
+</div>
+<div class="main-content">
+<div class="architecture-container">
+<!-- Layer 1 -->
+<div class="layer">
+<div class="layer-header">
+<div class="layer-icon"><i class="fas fa-desktop"></i></div>
+<div>
+<div class="layer-title">Frontend</div>
+<div class="layer-desc">Giao diện người dùng</div>
+</div>
+</div>
+<div class="tech-stack">
+<div class="tech-badge"><i class="fab fa-react"></i><span>React</span></div>
+<div class="tech-badge"><i class="fab fa-css3-alt"></i><span>TailwindCSS</span></div>
+<div class="tech-badge"><i class="fab fa-js"></i><span>TypeScript</span></div>
+<div class="tech-badge"><i class="fas fa-mobile-alt"></i><span>Responsive</span></div>
+</div>
+</div>
+<div class="arrow-down"><i class="fas fa-arrow-down"></i></div>
+<!-- Layer 2 -->
+<div class="layer">
+<div class="layer-header">
+<div class="layer-icon"><i class="fas fa-server"></i></div>
+<div>
+<div class="layer-title">Backend</div>
+<div class="layer-desc">Xử lý &amp; API</div>
+</div>
+</div>
+<div class="tech-stack">
+<div class="tech-badge"><i class="fab fa-python"></i><span>Python</span></div>
+<div class="tech-badge"><i class="fas fa-bolt"></i><span>FastAPI</span></div>
+<div class="tech-badge"><i class="fas fa-link"></i><span>LangChain</span></div>
+<div class="tech-badge"><i class="fas fa-database"></i><span>PostgreSQL</span></div>
+</div>
+</div>
+<div class="arrow-down"><i class="fas fa-arrow-down"></i></div>
+<!-- Layer 3 -->
+<div class="layer">
+<div class="layer-header">
+<div class="layer-icon"><i class="fas fa-brain"></i></div>
+<div>
+<div class="layer-title">AI &amp; Data</div>
+<div class="layer-desc">Xử lý AI &amp; Vector DB</div>
+</div>
+</div>
+<div class="tech-stack">
+<div class="tech-badge"><i class="fas fa-robot"></i><span>OpenAI GPT</span></div>
+<div class="tech-badge"><i class="fas fa-vector-square"></i><span>Vector DB</span></div>
+<div class="tech-badge"><i class="fas fa-code-branch"></i><span>Embeddings</span></div>
+<div class="tech-badge"><i class="fas fa-search"></i><span>Semantic Search</span></div>
+</div>
+</div>
+<div class="arrow-down"><i class="fas fa-arrow-down"></i></div>
+<!-- Layer 4 -->
+<div class="layer">
+<div class="layer-header">
+<div class="layer-icon"><i class="fas fa-cloud"></i></div>
+<div>
+<div class="layer-title">Infrastructure</div>
+<div class="layer-desc">Hạ tầng &amp; Bảo mật</div>
+</div>
+</div>
+<div class="tech-stack">
+<div class="tech-badge"><i class="fab fa-microsoft"></i><span>Azure</span></div>
+<div class="tech-badge"><i class="fas fa-shield-alt"></i><span>Auth PTIT</span></div>
+<div class="tech-badge"><i class="fas fa-lock"></i><span>JWT</span></div>
+<div class="tech-badge"><i class="fas fa-users"></i><span>SSO</span></div>
+</div>
+</div>
+</div>
+<div class="stats-row">
+<div class="stat-card">
+<div class="stat-icon"><i class="fas fa-tachometer-alt"></i></div>
+<div class="stat-info">
+<div class="stat-label">Hiệu suất</div>
+<div class="stat-value">99.9%</div>
+</div>
+</div>
+<div class="stat-card">
+<div class="stat-icon"><i class="fas fa-clock"></i></div>
+<div class="stat-info">
+<div class="stat-label">Thời gian phản hồi</div>
+<div class="stat-value">&lt; 1s</div>
+</div>
+</div>
+<div class="stat-card">
+<div class="stat-icon"><i class="fas fa-users"></i></div>
+<div class="stat-info">
+<div class="stat-label">Người dùng</div>
+<div class="stat-value">1000+</div>
+</div>
+</div>
+<div class="stat-card">
+<div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+<div class="stat-info">
+<div class="stat-label">Tăng trưởng</div>
+<div class="stat-value">+25%</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

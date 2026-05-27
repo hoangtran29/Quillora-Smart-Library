@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quillora - Thư viện số thông minh</title>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+        
+        .slide-container {
+            position: relative;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .slide-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 90% 10%, rgba(220, 20, 60, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(220, 20, 60, 0.03) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: absolute;
+            z-index: 10;
+            width: 1280px;
+            height: 720px;
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .logo-section {
+            margin-bottom: 35px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 2px solid #DC143C;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #DC143C;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-highlight {
+            color: #DC143C;
+        }
+        
+        .main-title {
+            font-size: 80px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+        
+        .title-highlight {
+            color: #DC143C;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .title-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(220, 20, 60, 0.2);
+            z-index: -1;
+            border-radius: 4px;
+        }
+        
+        .subtitle {
+            font-size: 30px;
+            color: #4a4a4a;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        .tagline {
+            font-size: 22px;
+            color: #666;
+            margin-bottom: 40px;
+            padding: 18px 40px;
+            background: rgba(220, 20, 60, 0.05);
+            border-radius: 40px;
+            display: inline-block;
+            border: 1px solid rgba(220, 20, 60, 0.1);
+        }
+        
+        .event-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            padding: 25px 50px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(220, 20, 60, 0.1);
+            width: fit-content;
+        }
+        
+        .event-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .event-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(220, 20, 60, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 20px;
+        }
+        
+        .event-text {
+            text-align: left;
+        }
+        
+        .event-label {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 2px;
+        }
+        
+        .event-value {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .team-info {
+            margin-top: auto;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .team-name {
+            color: #DC143C;
+            font-weight: 600;
+        }
+        
+        .book-icon {
+            position: absolute;
+            bottom: 40px;
+            left: 30px;
+            font-size: 140px;
+            color: rgba(220, 20, 60, 0.08);
+            transform: rotate(-15deg);
+            z-index: 2;
+        }
+        
+        .floating-icons {
+            position: absolute;
+            top: 180px;
+            right: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            z-index: 3;
+        }
+        
+        .floating-icon {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: #DC143C;
+            font-size: 22px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .floating-icon:nth-child(2) { animation-delay: 0.5s; }
+        .floating-icon:nth-child(3) { animation-delay: 1s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .feature-tags {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .feature-tag {
+            padding: 10px 20px;
+            background: rgba(220, 20, 60, 0.08);
+            border-radius: 25px;
+            font-size: 15px;
+            color: #DC143C;
+            font-weight: 600;
+            border: 1px solid rgba(220, 20, 60, 0.15);
+        }
+        
+        .ai-badge {
+            position: absolute;
+            top: 35px;
+            right: 40px;
+            background: linear-gradient(135deg, #DC143C 0%, #ff6b6b 100%);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(220, 20, 60, 0.3);
+            z-index: 20;
+        }
+
+        .qr-section {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qr-section img {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(220, 20, 60, 0.2);
+            background: white;
+            padding: 6px;
+        }
+
+        .qr-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #DC143C;
+            background: rgba(220, 20, 60, 0.08);
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(220, 20, 60, 0.15);
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<div class="slide-background"></div>
+<div class="book-icon">
+<i class="fas fa-book-open"></i>
+</div>
+<div class="floating-icons">
+<div class="floating-icon">
+<i class="fas fa-robot"></i>
+</div>
+<div class="floating-icon">
+<i class="fas fa-brain"></i>
+</div>
+<div class="floating-icon">
+<i class="fas fa-graduation-cap"></i>
+</div>
+</div>
+<div class="ai-badge">
+<i class="fas fa-magic"></i>
+<span>AI Powered</span>
+</div>
+<div class="qr-section">
+<img src="qrcode_334189851_1cd9074202847398c445c471cb8f4914.png" alt="QR Code Demo"/>
+<span class="qr-label"><i class="fas fa-play-circle" style="margin-right: 5px;"></i>Xem Demo</span>
+</div>
+<div class="content-wrapper">
+<div class="logo-section" data-object-type="textbox">
+<div class="logo-container">
+<div class="logo-icon">
+<i class="fas fa-feather-alt"></i>
+</div>
+<div class="logo-text">
+<span class="logo-highlight">Quill</span>ora
+                    </div>
+</div>
+</div>
+<h1 class="main-title" data-object-type="textbox">
+                Nền tảng đọc sách<br/>
+<span class="title-highlight">thông minh</span>
+</h1>
+<p class="subtitle" data-object-type="textbox">Ứng dụng AI (RAG) cho sinh viên PTIT</p>
+<div class="tagline" data-object-type="textbox">
+<i class="fas fa-quote-left" style="margin-right: 10px; color: #DC143C;"></i>
+                "Biến mỗi cuốn sách thành trợ lý học tập cá nhân"
+                <i class="fas fa-quote-right" style="margin-left: 10px; color: #DC143C;"></i>
+</div>
+<div class="feature-tags" data-object-type="textbox">
+<span class="feature-tag"><i class="fas fa-robot" style="margin-right: 8px;"></i>AI Assistant</span>
+<span class="feature-tag"><i class="fas fa-brain" style="margin-right: 8px;"></i>RAG Technology</span>
+<span class="feature-tag"><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i>Smart Learning</span>
+<span class="feature-tag"><i class="fas fa-book-reader" style="margin-right: 8px;"></i>Interactive</span>
+</div>
+<div class="event-info" data-object-type="textbox">
+<div class="event-item">
+<div class="event-icon">
+<i class="fas fa-calendar-alt"></i>
+</div>
+<div class="event-text">
+<div class="event-label">Sự kiện</div>
+<div class="event-value">Ngày hội Đọc sách PTIT 2026</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-icon">
+<i class="fas fa-users"></i>
+</div>
+<div class="event-text">
+<div class="event-label">Đối tượng</div>
+<div class="event-value">Sinh viên PTIT</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-icon">
+<i class="fas fa-laptop-code"></i>
+</div>
+<div class="event-text">
+<div class="event-label">Nền tảng</div>
+<div class="event-value">Web Application</div>
+</div>
+</div>
+</div>
+<div class="team-info" data-object-type="textbox">
+<span class="team-name">Quillora Team</span> • PTIT • 2026
+            </div>
+</div>
+</div>
+</body>
+</html>

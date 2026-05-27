@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.genspark.ai/api/files/s/IbVPQrda -->
+<html lang="vi"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Giá trị khác biệt — Tại sao chọn Quillora?</title>
+<link href="./all.min.css" rel="stylesheet">
+<link href="./css2" rel="stylesheet">
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+        
+        .slide-container {
+            position: relative;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .slide-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 90% 10%, rgba(220, 20, 60, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(220, 20, 60, 0.03) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: absolute;
+            z-index: 10;
+            width: 1280px;
+            height: 720px;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 35px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header-icon {
+            width: 60px;
+            height: 60px;
+            background: #DC143C;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+        }
+        
+        .header-title {
+            font-size: 42px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+        
+        .header-subtitle {
+            font-size: 20px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            flex: 1;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            height: 400px;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(220, 20, 60, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .card-top {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(220, 20, 60, 0.05);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .card-title {
+            font-size: 19px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .card-content {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: #DC143C;
+            font-weight: 600;
+        }
+        
+        .feature-tag {
+            display: inline-block;
+            background: rgba(220, 20, 60, 0.06);
+            color: #DC143C;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 10px;
+            width: fit-content;
+        }
+        
+        .comparison-row {
+            display: flex;
+            gap: 25px;
+            margin-top: auto;
+            margin-bottom: 10px;
+        }
+        
+        .comparison-item {
+            flex: 1;
+            background: white;
+            border-radius: 16px;
+            padding: 22px 28px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 1px solid rgba(220, 20, 60, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        }
+        
+        .comparison-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(220, 20, 60, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 20px;
+        }
+        
+        .comparison-text {
+            flex: 1;
+        }
+        
+        .comparison-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+        
+        .comparison-desc {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style></head>
+<body>
+<div class="slide-container">
+<div class="slide-background"></div>
+<div class="content-wrapper">
+<div class="header">
+<div class="header-left">
+<div class="header-icon">
+<i class="fas fa-star"></i>
+</div>
+<div>
+<div class="header-title">Giá trị khác biệt</div>
+<div class="header-subtitle">Tại sao chọn Quillora? 5 điểm độc đáo</div>
+</div>
+</div>
+<div class="header-right">
+<span style="color: #666; font-size: 18px; font-weight: 500;">Ngày hội Đọc sách PTIT 2026</span>
+</div>
+</div>
+<div class="main-content">
+<div class="benefits-grid">
+<!-- Card 1: Trích dẫn chính xác -->
+<div class="benefit-card">
+<div class="card-top">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-quote-right"></i></div>
+<div class="card-title">Trích dẫn chính xác</div>
+</div>
+<div class="card-content">
+                        Câu trả lời kèm <span class="highlight">nguồn gốc</span> (chương/trang), giảm thiểu tối đa <span class="highlight">ảo giác AI</span>.
+                    </div>
+</div>
+<div class="feature-tag">Minh bạch nguồn</div>
+</div>
+<!-- Card 2: Phương pháp khoa học -->
+<div class="benefit-card">
+<div class="card-top">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-brain"></i></div>
+<div class="card-title">Phương pháp khoa học</div>
+</div>
+<div class="card-content">
+<span class="highlight">Active Recall</span> + <span class="highlight">Spaced Repetition</span> cho nhớ lâu, học chủ động.
+                    </div>
+</div>
+<div class="feature-tag">Khoa học giáo dục</div>
+</div>
+<!-- Card 3: Tương tác đa phương thức -->
+<div class="benefit-card">
+<div class="card-top">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-microphone"></i></div>
+<div class="card-title">Đa phương thức</div>
+</div>
+<div class="card-content">
+                        Tương tác <span class="highlight">văn bản + giọng nói</span>, linh hoạt theo ngữ cảnh sử dụng.
+                    </div>
+</div>
+<div class="feature-tag">Voice &amp; Text</div>
+</div>
+<!-- Card 4: Cá nhân hóa -->
+<div class="benefit-card">
+<div class="card-top">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-user-cog"></i></div>
+<div class="card-title">Cá nhân hóa</div>
+</div>
+<div class="card-content">
+                        Gợi ý <span class="highlight">tóm tắt/quiz/flashcard</span> theo mục tiêu học của từng sinh viên.
+                    </div>
+</div>
+<div class="feature-tag">Personalized</div>
+</div>
+<!-- Card 5: PTIT Native -->
+<div class="benefit-card">
+<div class="card-top">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+<div class="card-title">PTIT Native</div>
+</div>
+<div class="card-content">
+                        Đăng nhập <span class="highlight">@stu.ptit.edu.vn</span>, tích hợp hạ tầng PTIT.
+                    </div>
+</div>
+<div class="feature-tag">Native Integration</div>
+</div>
+</div>
+<div class="comparison-row">
+<div class="comparison-item">
+<div class="comparison-icon"><i class="fas fa-check-circle"></i></div>
+<div class="comparison-text">
+<div class="comparison-title">Chính xác 95%+</div>
+<div class="comparison-desc">Trích dẫn chính xác từ nội dung sách</div>
+</div>
+</div>
+<div class="comparison-item">
+<div class="comparison-icon"><i class="fas fa-clock"></i></div>
+<div class="comparison-text">
+<div class="comparison-title">Tiết kiệm 60%</div>
+<div class="comparison-desc">Thời gian học tập</div>
+</div>
+</div>
+<div class="comparison-item">
+<div class="comparison-icon"><i class="fas fa-users"></i></div>
+<div class="comparison-text">
+<div class="comparison-title">1000+ Users</div>
+<div class="comparison-desc">Sinh viên PTIT đang sử dụng</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script defer="" src="./v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;4edd5f8ec12a48cfa682ab8261b80a79&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+<script src="./slide-inner.js.download"></script></body></html>

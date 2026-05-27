@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Giới thiệu Quillora - Quillora là gì?</title>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+        
+        .slide-container {
+            position: relative;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .slide-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 90% 10%, rgba(220, 20, 60, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(220, 20, 60, 0.03) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: absolute;
+            z-index: 10;
+            width: 1280px;
+            height: 720px;
+            padding: 40px 60px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header-icon {
+            width: 45px;
+            height: 45px;
+            background: #DC143C;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .header-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+        
+        .header-subtitle {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+        }
+        
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        
+        .hero-content {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 56px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+        
+        .hero-title .highlight {
+            color: #DC143C;
+        }
+        
+        .hero-description {
+            font-size: 20px;
+            color: #4a4a4a;
+            line-height: 1.5;
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .definition-box {
+            background: white;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(220, 20, 60, 0.1);
+            margin-bottom: 10px;
+        }
+        
+        .definition-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .definition-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(220, 20, 60, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 22px;
+        }
+        
+        .definition-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .definition-text {
+            font-size: 17px;
+            color: #4a4a4a;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .value-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(220, 20, 60, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-height: 160px;
+        }
+        
+        .value-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .value-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(220, 20, 60, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 16px;
+        }
+        
+        .value-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .value-desc {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .tagline {
+            text-align: center;
+            padding: 25px;
+            background: rgba(220, 20, 60, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(220, 20, 60, 0.1);
+            margin-top: auto;
+        }
+        
+        .tagline-text {
+            font-size: 22px;
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .tagline-highlight {
+            color: #DC143C;
+            font-weight: 700;
+        }
+        
+        .feature-tags {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .feature-tag {
+            padding: 8px 18px;
+            background: white;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #DC143C;
+            font-weight: 600;
+            border: 1px solid rgba(220, 20, 60, 0.15);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<div class="slide-background"></div>
+<div class="content-wrapper">
+<div class="header">
+<div class="header-left">
+<div class="header-icon">
+<i class="fas fa-info-circle"></i>
+</div>
+<div>
+<div class="header-title">Giới thiệu Quillora</div>
+<div class="header-subtitle">Nền tảng đọc sách thông minh ứng dụng AI</div>
+</div>
+</div>
+<div class="header-right">
+<span style="color: #666; font-size: 16px; font-weight: 500;">Ngày hội Đọc sách PTIT 2026</span>
+</div>
+</div>
+<div class="main-content">
+<div class="hero-section">
+<div class="hero-content">
+<h1 class="hero-title">
+<span class="highlight">Quillora</span> là gì?
+                    </h1>
+<p class="hero-description">
+                        Quillora là nền tảng đọc sách thông minh ứng dụng <span class="highlight">AI tạo sinh (Generative AI)</span> kết hợp kỹ thuật <span class="highlight">RAG (Retrieval-Augmented Generation)</span>, biến mỗi cuốn sách thành một trợ lý học tập cá nhân thông minh.
+                    </p>
+</div>
+</div>
+<div class="definition-box">
+<div class="definition-header">
+<div class="definition-icon">
+<i class="fas fa-brain"></i>
+</div>
+<div class="definition-title">Định nghĩa &amp; Công nghệ</div>
+</div>
+<div class="definition-text">
+                    Quillora sử dụng <strong>AI + RAG</strong> để cung cấp câu trả lời chính xác, có trích dẫn từ nội dung sách, giúp sinh viên tiếp cận kiến thức một cách chủ động và hiệu quả. Hệ thống kết hợp khả năng tìm kiếm ngữ nghĩa thông minh với tạo nội dung AI để mang lại trải nghiệm học tập tối ưu.
+                </div>
+<div class="value-props">
+<div class="value-card">
+<div class="value-header">
+<div class="value-icon"><i class="fas fa-check-circle"></i></div>
+<div class="value-title">Trả lời chính xác</div>
+</div>
+<div class="value-desc">Có trích dẫn từ chương/trang, giảm thiểu tối đa tình trạng ảo giác AI.</div>
+</div>
+<div class="value-card">
+<div class="value-header">
+<div class="value-icon"><i class="fas fa-book-reader"></i></div>
+<div class="value-title">Tóm tắt thông minh</div>
+</div>
+<div class="value-desc">Tóm tắt nội dung chính ~200 từ, tự động tạo câu hỏi ôn tập &amp; flashcard.</div>
+</div>
+<div class="value-card">
+<div class="value-header">
+<div class="value-icon"><i class="fas fa-microphone"></i></div>
+<div class="value-title">Tương tác đa phương thức</div>
+</div>
+<div class="value-desc">Hỗ trợ đặt câu hỏi qua văn bản, giọng nói và tìm kiếm ngữ nghĩa nâng cao.</div>
+</div>
+</div>
+</div>
+<div class="tagline">
+<div class="tagline-text">
+<i class="fas fa-quote-left" style="margin-right: 12px; color: #DC143C; font-size: 0.8em; vertical-align: middle;"></i>
+                    "<span class="tagline-highlight">Biến mỗi cuốn sách thành trợ lý học tập cá nhân</span>"
+                    <i class="fas fa-quote-right" style="margin-left: 12px; color: #DC143C; font-size: 0.8em; vertical-align: middle;"></i>
+</div>
+<div class="feature-tags">
+<span class="feature-tag"><i class="fas fa-robot" style="margin-right: 8px;"></i>AI Assistant</span>
+<span class="feature-tag"><i class="fas fa-brain" style="margin-right: 8px;"></i>RAG Technology</span>
+<span class="feature-tag"><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i>Smart Learning</span>
+<span class="feature-tag"><i class="fas fa-book-reader" style="margin-right: 8px;"></i>Interactive</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

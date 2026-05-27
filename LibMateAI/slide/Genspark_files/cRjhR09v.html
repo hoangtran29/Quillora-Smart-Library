@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.genspark.ai/api/files/s/cRjhR09v -->
+<html lang="vi"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Thách thức sinh viên kỹ thuật PTIT</title>
+<link href="./all.min.css" rel="stylesheet">
+<link href="./css2" rel="stylesheet">
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+        
+        .slide-container {
+            position: relative;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .slide-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 90% 10%, rgba(220, 20, 60, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(220, 20, 60, 0.03) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: absolute;
+            z-index: 10;
+            width: 1280px;
+            height: 720px;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header-icon {
+            width: 45px;
+            height: 45px;
+            background: #DC143C;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .header-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+        
+        .header-subtitle {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            flex: 1;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            flex: 1;
+        }
+        
+        .challenge-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(220, 20, 60, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(220, 20, 60, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0;
+        }
+        
+        .card-content {
+            font-size: 15px;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: #DC143C;
+            font-weight: 700;
+        }
+        
+        .stat-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .stat-value {
+            font-size: 15px;
+            font-weight: 700;
+            color: #DC143C;
+        }
+        
+        .bottom-row {
+            display: flex;
+            gap: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .insight-box {
+            flex: 1;
+            background: rgba(220, 20, 60, 0.05);
+            border-radius: 14px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        
+        .insight-icon {
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC143C;
+            font-size: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(220, 20, 60, 0.1);
+        }
+        
+        .insight-text {
+            flex: 1;
+        }
+        
+        .insight-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+        
+        .insight-desc {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style></head>
+<body>
+<div class="slide-container">
+<div class="slide-background"></div>
+<div class="content-wrapper">
+<div class="header">
+<div class="header-left">
+<div class="header-icon">
+<i class="fas fa-exclamation-triangle"></i>
+</div>
+<div>
+<div class="header-title">Thách thức của sinh viên kỹ thuật PTIT</div>
+<div class="header-subtitle">5 rào cản lớn trong việc tiếp cận và ghi nhớ kiến thức</div>
+</div>
+</div>
+<div class="header-right">
+<span style="color: #666; font-size: 16px; font-weight: 500;">Ngày hội Đọc sách PTIT 2026</span>
+</div>
+</div>
+<div class="main-content">
+<div class="cards-grid">
+<!-- Row 1 -->
+<div class="challenge-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-book"></i></div>
+<div class="card-title">Giáo trình dày</div>
+</div>
+<div class="card-content">
+                        Tài liệu chuyên ngành <span class="highlight">dày dặn</span>, thuật ngữ phức tạp, khó tiếp cận và nắm bắt nội dung chính.
+                    </div>
+<div class="stat-row">
+<div class="stat-label">Độ khó</div>
+<div class="stat-value">Cao</div>
+</div>
+</div>
+<div class="challenge-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-search"></i></div>
+<div class="card-title">Thiếu tra cứu ngữ nghĩa</div>
+</div>
+<div class="card-content">
+                        Khó tìm đúng <span class="highlight">đoạn văn cần</span>, thiếu công cụ tra cứu theo ngữ cảnh chính xác.
+                    </div>
+<div class="stat-row">
+<div class="stat-label">Hiệu quả</div>
+<div class="stat-value">Thấp</div>
+</div>
+</div>
+<div class="challenge-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-brain"></i></div>
+<div class="card-title">Ghi nhớ kém</div>
+</div>
+<div class="card-content">
+                        Quên <span class="highlight">79%</span> kiến thức sau 31 ngày theo đường cong lãng quên Ebbinghaus.
+                    </div>
+<div class="stat-row">
+<div class="stat-label">Tỷ lệ</div>
+<div class="stat-value">79%</div>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="challenge-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-redo"></i></div>
+<div class="card-title">Ôn tập rời rạc</div>
+</div>
+<div class="card-content">
+                        Thiếu <span class="highlight">quiz/flashcard</span> để chủ động ôn tập, không có hệ thống ôn tập khoa học.
+                    </div>
+<div class="stat-row">
+<div class="stat-label">Tần suất</div>
+<div class="stat-value">Rời rạc</div>
+</div>
+</div>
+<div class="challenge-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-puzzle-piece"></i></div>
+<div class="card-title">Nguồn tài liệu phân mảnh</div>
+</div>
+<div class="card-content">
+                        Tài liệu <span class="highlight">phân tán</span> khó tổng hợp kiến thức từ nhiều nguồn khác nhau.
+                    </div>
+<div class="stat-row">
+<div class="stat-label">Tích hợp</div>
+<div class="stat-value">Kém</div>
+</div>
+</div>
+<div class="challenge-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-clock"></i></div>
+<div class="card-title">Thời gian hạn chế</div>
+</div>
+<div class="card-content">
+                        Chỉ <span class="highlight">15 phút</span> đọc sách/ngày, không đủ để nắm bắt kiến thức sâu.
+                    </div>
+<div class="stat-row">
+<div class="stat-label">Thời gian</div>
+<div class="stat-value">15 phút</div>
+</div>
+</div>
+</div>
+<div class="bottom-row">
+<div class="insight-box">
+<div class="insight-icon"><i class="fas fa-lightbulb"></i></div>
+<div class="insight-text">
+<div class="insight-title">Giải pháp AI</div>
+<div class="insight-desc">Ứng dụng RAG để trích dẫn chính xác từ nội dung sách</div>
+</div>
+</div>
+<div class="insight-box">
+<div class="insight-icon"><i class="fas fa-users"></i></div>
+<div class="insight-text">
+<div class="insight-title">Đối tượng</div>
+<div class="insight-desc">Sinh viên PTIT và các trường đại học kỹ thuật</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script defer="" src="./v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;4edd5f8ec12a48cfa682ab8261b80a79&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+<script src="./slide-inner.js.download"></script></body></html>
